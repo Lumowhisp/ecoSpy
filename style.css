@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Delius&family=Fjalla+One&family=Kaushan+Script&family=M+PLUS+Rounded+1c&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-bitcount-prop-single: "Bitcount Prop Single", sans-serif;
+  --font-delius: "Delius", cursive;
+  --font-fjalla-one: "Fjalla One", sans-serif;
+  --font-kaushan-script: "Kaushan Script", cursive;
+  --font-mplus-rounded: "M PLUS Rounded 1c", sans-serif;
+  --font-playfair-display: "Playfair Display", serif;
+}
+@layer base {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #bbf7d0 inset !important; /* bg-green-200 */
+    -webkit-text-fill-color: #065f46 !important; /* text-green-900 */
+    caret-color: #065f46;
+  }
+
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #bbf7d0 inset !important;
+    -webkit-text-fill-color: #065f46 !important;
+  }
+}
