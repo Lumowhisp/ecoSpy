@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="../output.css" />
     <title>Get Started</title>
   </head>
   <body
@@ -15,7 +15,7 @@
         <a href="Landing.html"
           ><img
             class="max-h-32 w-auto mt-2 ml-10"
-            src="media/logoecospyBackgroundRemoved.png"
+            src="logoecospyBackgroundRemoved.png"
             alt="Logo-Src"
         /></a>
         <!-- menu -->
@@ -23,7 +23,7 @@
           <li>
             <a
               class="text-2xl hover:text-green-600 hover:underline transition duration-700 shadow-2xl"
-              href="aboutus.html"
+              href="../aboutus.html"
               >About Us</a
             >
           </li>
@@ -52,7 +52,7 @@
               playsinline
             >
               <source
-                src="media/Smart_Waste_Management_Reel_Creation.mp4"
+                src="Smart_Waste_Management_Reel_Creation.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.
@@ -90,6 +90,7 @@
                   </svg>
                   <input
                     class="bg-green-200 py-0 sm:py-2 px-0 sm:px-4 pl-6 sm:pl-10 rounded-3xl border-0 focus:outline-none focus:ring-0"
+                    id="email"
                     type="email"
                     placeholder="E-mail"
                   />
@@ -112,6 +113,7 @@
 
                   <input
                     class="bg-green-200 py-0 sm:py-2 px-0 sm:px-4 pl-6 sm:pl-10 rounded-3xl border-0 focus:outline-none focus:ring-0"
+                    id="password"
                     type="password"
                     placeholder="Password"
                   />
@@ -119,7 +121,7 @@
                 <div
                   class="px-1 sm:px-6 py-0 sm:py-2 ml-2 rounded-2xl bg-green-900 transiton transform shadow-lg inline-block text-amber-300 font-semibold hover:bg-amber-600 hover:text-green-800 transition duration-500"
                 >
-                  <button>Submit</button>
+                  <button id="signinBtn" type="button">Sign In</button>
                 </div>
                 <div>
                   <a
@@ -132,10 +134,11 @@
                   New User?
                   <a
                     class="hover:underline hover:scale-125 transition duration-300 transform"
-                    href="#"
+                    href="signup.html"
                     >Sign Up</a
                   >
                 </p>
+                <p id="verText"></p>
               </form>
             </div>
           </div>
@@ -145,5 +148,6 @@
     <footer class="flex items-center justify-center text-green-800 p-4 mt-auto">
       <p>&copy; 2025 EcoSpy. All rights reserved.</p>
     </footer>
+    <script src="signin.js"></script>
   </body>
 </html>
