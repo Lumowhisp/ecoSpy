@@ -41,13 +41,39 @@ EcoSpy is an innovative solution designed to revolutionize waste collection and 
 
 ```
 EcoSpy/
-├── index.html          # Main landing page
-├── aboutus.html        # About EcoSpy page
-├── style.css           # Custom styles and theme
-├── output.css          # Generated Tailwind CSS (build artifact)
-├── package.json        # Project dependencies and scripts
-├── .gitignore          # Git ignore rules
-└── README.md           # Project documentation
+├── backend/                # Express backend
+│   └── app.js              # Main server file (Express + EJS setup)
+│
+├── node_modules/           # Installed dependencies
+│
+├── public/                 # Static assets served by Express
+│   ├── style.css           # Compiled Tailwind CSS output
+│   ├── js/                 # Client-side JavaScript files
+│   │   ├── signin.js
+│   │   └── signup.js
+│   └── media/              # Images, videos, and other media
+│       ├── logoecospyBackgroundRemoved.png
+│       └── Smart_Waste_Management_Reel_Creation.mp4
+│
+├── signup/                 # (Old raw HTML/JS – being migrated to views/public)
+│   ├── signup.html
+│   ├── getStarted.html
+│   ├── signup.js
+│   └── signin.js
+│
+├── views/                  # EJS templates for server-side rendering
+│   ├── Landing.ejs
+│   ├── aboutus.ejs
+│   └── signup/             # Signup-related pages
+│       ├── signup.ejs
+│       └── getStarted.ejs
+│
+├── src/                    # Tailwind input CSS
+│   └── input.css
+│
+├── package.json            # Project metadata + dependencies
+├── package-lock.json
+└── README.md               # Documentation
 ```
 
 ## 🚀 Getting Started
