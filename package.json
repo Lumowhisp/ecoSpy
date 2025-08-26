@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
     "tailwindcss": "^4.1.12"
   }
 }
