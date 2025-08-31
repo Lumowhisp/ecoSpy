@@ -48,7 +48,8 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 For any inquiries or support, please contact:
 
-- Email: support@ecospy.com
+- Founder: Adityaz
+- Email: kumaraditya12981006@gmail.com
 - GitHub: [https://github.com/yourusername/EcoSpy-React](https://github.com/yourusername/EcoSpy-React)
 
 ---
