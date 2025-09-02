@@ -15,7 +15,7 @@ const GetStarted = () => {
     );
 
     if (user) {
-      navigate("/"); // change this route to wherever you want after login
+      navigate("/PlanChoosing"); // change this route to wherever you want after login
     } else {
       setError("Invalid credentials");
     }
