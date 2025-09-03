@@ -1,5 +1,6 @@
-@import "tailwindcss";
+
 @import url("https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Delius&family=Fjalla+One&family=Kaushan+Script&family=M+PLUS+Rounded+1c&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import "tailwindcss";
 
 
 @theme {

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword,sendEmailVerification, updateProfile } from "firebase/auth";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -8,29 +10,41 @@ function Signup() {
   const [verPass, setVerPass] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSignUp = () => {
-    let userList = JSON.parse(localStorage.getItem("users")) || [];
-
-    if (!userName || !userPass || !userEmail || !verPass) {
-      setMessage("Fields are required");
-      return;
-    }
-
+  const handleSignUp =async (e) => {e.preventDefault();
     if (userPass !== verPass) {
       setMessage("Password didn't match");
       return;
     }
-
-    const exists = userList.find((user) => user.userEmail === userEmail);
-    if (exists) {
-      setMessage("User already exists");
-      return;
+    try{
+      const userCredential=await createUserWithEmailAndPassword(auth,userEmail,userPass)
+      const user=userCredential.user;
+      await updateProfile(auth.currentUser, {
+        displayName: userName,
+      });
+      await sendEmailVerification(user);
+      setMessage("User Registered successfully ✅.Please Verify E-mail");
+    } catch(error){
+      setMessage(error.message);
     }
+    // let userList = JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = { userName, userEmail, userPass };
-    userList.push(user);
-    localStorage.setItem("users", JSON.stringify(userList));
-    setMessage("User Registered successfully ✅");
+    // if (!userName || !userPass || !userEmail || !verPass) {
+    //   setMessage("Fields are required");
+    //   return;
+    // }
+
+    
+
+    // const exists = userList.find((user) => user.userEmail === userEmail);
+    // if (exists) {
+    //   setMessage("User already exists");
+    //   return;
+    // }
+
+    // const user = { userName, userEmail, userPass };
+    // userList.push(user);
+    // localStorage.setItem("users", JSON.stringify(userList));
+    // setMessage("User Registered successfully ✅");
   };
 
   return (
@@ -43,14 +57,14 @@ function Signup() {
 
         <div className="sm:pl-10 sm:pr-10">
           <div className="flex flex-col items-center justify-center space-y-3 bg-green-700 rounded-2xl py-6 mr-5 px-5">
-          <div class="relative">
+            <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                className="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
               >
                 <path
                   stroke-linecap="round"
@@ -58,21 +72,23 @@ function Signup() {
                   d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                 />
               </svg>
-            <input
-              className="pl-6 bg-green-300 rounded-xl"
-              type="text"
-              placeholder="Name"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            /></div>
-             <div class="relative">
+              <input
+                className="pl-6 bg-green-300 rounded-xl"
+                type="text"
+                placeholder="Name"
+                required
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+            <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                className="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
               >
                 <path
                   stroke-linecap="round"
@@ -81,21 +97,23 @@ function Signup() {
                 />
               </svg>
 
-            <input
-              className="pl-6 bg-green-300 rounded-xl"
-              type="email"
-              placeholder="Email"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
-            /></div>
-            <div class="relative">
+              <input
+                className="pl-6 bg-green-300 rounded-xl"
+                type="email"
+                placeholder="Email"
+                required
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+            </div>
+            <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                className="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
               >
                 <path
                   stroke-linecap="round"
@@ -103,21 +121,23 @@ function Signup() {
                   d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
                 />
               </svg>
-            <input
-              className="pl-6 bg-green-300 rounded-xl"
-              type="password"
-              placeholder="Set Password"
-              value={userPass}
-              onChange={(e) => setUserPass(e.target.value)}
-            /></div>
-            <div class="relative">
+              <input
+                className="pl-6 bg-green-300 rounded-xl"
+                type="password"
+                placeholder="Set Password"
+                required
+                value={userPass}
+                onChange={(e) => setUserPass(e.target.value)}
+              />
+            </div>
+            <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                className="absolute left-1 top-1/2 transform -translate-y-1/2 w-4 h-4"
               >
                 <path
                   stroke-linecap="round"
@@ -125,13 +145,15 @@ function Signup() {
                   d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
               </svg>
-            <input
-              className="pl-6 bg-green-300 rounded-xl"
-              type="password"
-              placeholder="Verify Password"
-              value={verPass}
-              onChange={(e) => setVerPass(e.target.value)}
-            /></div>
+              <input
+                className="pl-6 bg-green-300 rounded-xl"
+                type="password"
+                placeholder="Verify Password"
+                required
+                value={verPass}
+                onChange={(e) => setVerPass(e.target.value)}
+              />
+            </div>
           </div>
           <button
             onClick={handleSignUp}

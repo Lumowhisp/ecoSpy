@@ -4,12 +4,13 @@ import Aboutus from "./components/aboutUs/aboutUs";
 import GetStarted from "./components/getStarted/getStarted";
 import Signup from "./components/signUp/signUp";
 import PlanChoosing from "./components/planChoose/plan";
+import ForgetPass from "./components/ForgetPass/forgetPass";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<ForgetPass />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/get-started" element={<GetStarted />} />
         <Route path="/signin" element={<Signup />} />
