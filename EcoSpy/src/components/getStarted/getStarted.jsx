@@ -17,7 +17,7 @@ const GetStarted = () => {
         // Signed in successfully
         const user = userCredential.user;
         console.log("Signed in user:", user);
-        navigate("/PlanChoosing"); // jaha redirect karna ho
+        navigate("/dashBoard"); // jaha redirect karna ho
       })
       .catch((error) => {
         setError(error.message); // error message show kar de
@@ -60,7 +60,7 @@ const GetStarted = () => {
 
       <main>
         <div className="flex w-full justify-center items-center mt-10">
-          <div className="flex w-full max-w-5xl bg-amber-500 justify-center items-center rounded-r-3xl rounded-l-3xl">
+          <div className="flex w-full max-w-5xl bg-amber-500 justify-center items-center rounded-r-3xl rounded-l-3xl hover:scale-110 transform transition duration-500 shadow-2xl shadow-green-900">
             {/* left video */}
             <div className="bg-slate-400 w-1/2 h-full">
               <video
@@ -157,7 +157,7 @@ const GetStarted = () => {
 
                   {/* Forget password */}
                   <a
-                    href="#"
+                    href="/forgetpassword"
                     className="px-6 py-2 rounded-2xl bg-amber-400 shadow-lg text-green-900 hover:scale-110 transition duration-300"
                   >
                     Forget Password

@@ -166,7 +166,7 @@ function ForgetPass() {
                   
                   <div className="mt-4">
                     <Link 
-                      to="/login" 
+                      to="/get-started" 
                       className="text-green-700 hover:text-green-900 font-medium text-lg"
                     >
                       ← Back to Login
