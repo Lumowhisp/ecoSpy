@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../firebase";
-import { signInWithEmailAndPassword, } from "firebase/auth";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const GetStarted = () => {
   const [email, setEmail] = useState("");
@@ -168,7 +167,7 @@ const GetStarted = () => {
                     New User?{" "}
                     <a
                       className="hover:underline hover:scale-125 transition duration-300"
-                      href="/signin"
+                      href="/signup"
                     >
                       Sign Up
                     </a>

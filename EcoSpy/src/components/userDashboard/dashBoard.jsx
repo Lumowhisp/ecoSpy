@@ -4,6 +4,7 @@ import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import WasteHistory from "./wasteHistory";
+import WasteTypeChart from "./wasteTypeGraph";
 
 function DashBoard() {
   const [plan, setPlan] = useState("");
@@ -89,7 +90,7 @@ function DashBoard() {
       </header>
       <div>
         <div className="flex justify-center">
-        <div className="backdrop-blur-sm bg-white/30 p-6 rounded-xl w-[90vw] hover:backdrop-blur-md hover:bg-amber-500/30 transform transition duration-1000">
+          <div className="backdrop-blur-sm bg-white/30 p-6 rounded-xl w-[90vw] hover:backdrop-blur-md hover:bg-amber-500/30 transform transition duration-1000">
             {/* //wasteCollectionHistory */}
             <div className="flex justify-between mt-7 mx-20 mb-7">
               <div className="h-[40vh] w-[20vw] bg-green-100 rounded-xl pt-3 hover:scale-110 transform transition duration-500 hover:shadow-2xl hover:shadow-green-900">
@@ -111,11 +112,10 @@ function DashBoard() {
                         <span>kg</span>
                       </span>
                     </p>
-                    
                   </div>
                   <div className="font-delius text-xl">
-                      <p>Waste Collected</p>
-                    </div>
+                    <p>Waste Collected</p>
+                  </div>
                 </div>
               </div>
               {/* //EcoPoints */}
@@ -191,7 +191,10 @@ function DashBoard() {
             </div>
           </div>
         </div>
-        <div className="flex mt-5 ml-18"><WasteHistory/></div>
+        <div className="flex mt-5 space-x-3 ml-18">
+          <div><WasteHistory /></div>
+          <div className="w-2xl h-full"><WasteTypeChart/></div>
+        </div>
         
       </div>
     </div>
